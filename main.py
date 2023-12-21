@@ -3,8 +3,7 @@ import random
 
 logging.basicConfig(level=logging.DEBUG)
 
-class Properties:
-	Properties = None
+class PropertieBase:
 	def __init__(self, **properties):
 		super().__init__()
 		Properties = self
@@ -18,7 +17,16 @@ class Properties:
 		self.properties[str(Value)] = value
 	
 	def getRandom(self):
-	  return self.rand
+		return self.rand
+
+class Properties():
+	# this is going to be used to added it to other classes
+	Properties = PropertieBase()
+
+	def __init__(self):
+		super().__init__()
+
+
 
 
 class StoreName(Properties):
