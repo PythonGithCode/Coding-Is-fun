@@ -1,7 +1,7 @@
 import logging
 import random
 
-logging.level(lo)
+logging.basicConfig(level=logging.DEBUG)
 
 class Properties:
 	Properties = None
@@ -81,7 +81,10 @@ print(NamesConstant.getNames())
 Dave = dog("dave")
 
 print(Dave.setName("ok"))
-logging.info("dave props", Dave.Properties)
+#print(Dave.Properties)
+
+logging.info("dave props: %s", Dave.Properties)
+
 # Dave.Properties().setPropertie("nothing", 1)
 # print(Dave.Properties().getRandom())
 # print(Dave.Properties().getRandom())
