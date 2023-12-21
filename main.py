@@ -19,17 +19,25 @@ class PropertieBase:
 	def getRandom(self):
 		return self.rand
 
-class Properties():
-	# this is going to be used to added it to other classes
-	Properties = PropertieBase()
 
-	def __init__(self):
-		super().__init__()
+# print(PropertieBase().getRandom())
+# print(PropertieBase().getRandom())
 
 
+# class Properties():
+# 	# this is going to be used to added it to other classes
+# 	properties = PropertieBase()
+
+# 	def __init__(self):
+# 		super().__init__()
+# 		# properties = PropertieBase()
 
 
-class StoreName(Properties):
+
+
+class StoreName:
+	properties = PropertieBase()
+
 	def __init__(self, Name, Count = 0, **properties):
 		super().__init__()
 		self.Name = Name
@@ -46,7 +54,9 @@ class StoreName(Properties):
 
 
 
-class Names(Properties):
+class Names():
+	properties = PropertieBase()
+
 	def __init__(self, NameDict={}, **properties):
 		super().__init__()
 		self.NameDict  = NameDict
@@ -67,6 +77,8 @@ class Names(Properties):
 NamesConstant = Names()
 
 class dog(Names):
+	properties = PropertieBase()
+	
 	def __init__(self, nameV=None, **properties):
 		super().__init__()
 		self.NameV = nameV
@@ -91,7 +103,11 @@ Dave = dog("dave")
 print(Dave.setName("ok"))
 #print(Dave.Properties)
 
-logging.info("dave props: %s", Dave.Properties)
+logging.info("dave props: %s", Dave.properties.getRandom())
+
+logging.info("dave props2: %s", Dave.properties.getRandom())
+
+logging.info("props: %s", Properties.properties.getRandom())
 
 # Dave.Properties().setPropertie("nothing", 1)
 # print(Dave.Properties().getRandom())
