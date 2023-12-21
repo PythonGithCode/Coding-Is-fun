@@ -60,15 +60,15 @@ NamesConstant = Names()
 
 class dog(Names):
 	def __init__(self, nameV=None, **properties):
-	    super().__init__()
-	    self.NameV = nameV
+		super().__init__()
+		self.NameV = nameV
 	
 	def getName(self):
-	    return self.Name
-	    
+		return self.Name
+	
 	def setName(self, nameValue):
-	    # setdefualt name if the new name is a name that did't be there before
-	    return self.NameDict
+		# setdefualt name if the new name is a name that did't be there before
+		return self.NameDict
 
 
 
