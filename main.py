@@ -6,32 +6,17 @@ logging.basicConfig(level=logging.DEBUG)
 class PropertieBase:
 	def __init__(self, **properties):
 		super().__init__()
-		Properties = self
 		self.properties = properties
 		self.rand = random.random()
 	
-	def getPropertie(self, Value):
+	def gets(self, Value):
 		return self.properties[str(Value)]
 	
-	def setPropertie(self, Value, value):
+	def sets(self, Value, value):
 		self.properties[str(Value)] = value
 	
-	def getRandom(self):
+	def getR(self):
 		return self.rand
-
-
-# print(PropertieBase().getRandom())
-# print(PropertieBase().getRandom())
-
-
-# class Properties():
-# 	# this is going to be used to added it to other classes
-# 	properties = PropertieBase()
-
-# 	def __init__(self):
-# 		super().__init__()
-# 		# properties = PropertieBase()
-
 
 
 
@@ -42,6 +27,9 @@ class StoreName:
 		super().__init__()
 		self.Name = Name
 		self.Count = Count
+	
+	def __str__(self):
+		return str(self.Name) + ", " + str(self.Count)
 	
 	def add(self):
 		self.Count += 1
@@ -68,6 +56,8 @@ class Names():
 		return self.NameDict.keys()
 	
 	def addName(self, storeName):
+		if type(storeName) != type(StoreName):
+			StoreName = StoreName(storeName, 1)
 		self.NameDict.update({storeName.getName(): storeName})
 	
 	def getName(self, nameValue):
@@ -78,10 +68,11 @@ NamesConstant = Names()
 
 class dog(Names):
 	properties = PropertieBase()
-	
+
 	def __init__(self, nameV=None, **properties):
 		super().__init__()
 		self.NameV = nameV
+		NamesConstant.addName(self.NameV)
 	
 	def getName(self):
 		return self.Name
@@ -92,7 +83,7 @@ class dog(Names):
 
 
 
-NamesConstant.makeNewName("Dave")
+NamesConstant.makeNewName("dave")
 
 print(NamesConstant.getNames())
 
@@ -103,24 +94,14 @@ Dave = dog("dave")
 print(Dave.setName("ok"))
 #print(Dave.Properties)
 
-logging.info("dave props: %s", Dave.properties.getRandom())
+logging.info("dave props: %s", Dave.properties.getR())
 
-logging.info("dave props2: %s", Dave.properties.getRandom())
+logging.info("dave props2: %s", Dave.properties.getR())
 
-logging.info("props: %s", Properties.properties.getRandom())
+logging.info("Name props2: %s", NamesConstant.properties.getR())
 
-# Dave.Properties().setPropertie("nothing", 1)
-# print(Dave.Properties().getRandom())
-# print(Dave.Properties().getRandom())
-# print(Dave.Properties().getPropertie("nothing"))
+logging.info("Name Dave: %s", NamesConstant.getName("dave"))
 
 
-#dave = dog()
-#dave.properties["age"] = 9
-#dave.setPropertie("name", "dave")
-
-#print(dave.getPropertie("name"))
-
-#print("ok")
 
 
