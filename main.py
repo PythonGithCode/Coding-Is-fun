@@ -57,7 +57,8 @@ class Names():
 	
 	def addName(self, storeName):
 		if type(storeName) != type(StoreName):
-			StoreName = StoreName(storeName, 1)
+			storeName = StoreName(storeName, 1)
+		# this needs to be adding
 		self.NameDict.update({storeName.getName(): storeName})
 	
 	def getName(self, nameValue):
@@ -72,6 +73,7 @@ class dog(Names):
 	def __init__(self, nameV=None, **properties):
 		super().__init__()
 		self.NameV = nameV
+		logging.info("Added new name")
 		NamesConstant.addName(self.NameV)
 	
 	def getName(self):
@@ -90,6 +92,7 @@ print(NamesConstant.getNames())
 
 
 Dave = dog("dave")
+Daave = dog("dave")
 
 print(Dave.setName("ok"))
 #print(Dave.Properties)
